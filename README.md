@@ -24,3 +24,8 @@ Spring은 객체간의 결합을 코딩 하는것이 아니라 Container로 처�
 ### Dependency Injection 
 Spring Container내에 생성되어있는 객체들의 의존성을 주입함 (잘 모르겠음) 
 (국룰 : 생성자 주입)    
+
+### 에러해결
+.properties 에 적어둔 DB정보 있을때 -> 해당 DB 켜저 있어야함. (안켜져 있으면 에러) 
++ Bean으로 등록 하려할때 역시 DB 켜져 있어야함 안켜져있으면 생성자 오류 뜸 
++ AOP 사용시 Config 빼지 않으면, 순환 오류 생김 
