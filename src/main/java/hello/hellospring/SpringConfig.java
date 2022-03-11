@@ -1,5 +1,6 @@
 package hello.hellospring;
 
+import hello.hellospring.app.TimeTraceAop;
 import hello.hellospring.repository.*;
 import hello.hellospring.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,27 +23,33 @@ public class SpringConfig {
     public SpringConfig(DataSource dataSource) {
         this.dataSource = dataSource;
     }*/
-    private EntityManager em;
+    //private EntityManager em;
+
+    private final MemberRepository memberRepository;
 
     @Autowired
-    public SpringConfig(EntityManager em){
-        this.em = em;
+    public SpringConfig( MemberRepository memberRepository){
+        this.memberRepository = memberRepository;
     }
     //Spring Container에 Bean 등록
     @Bean
     public MemberService memberService(){
-        return new MemberService(memberRepository());
+        return new MemberService(memberRepository);
     }
 
     //Spring Container에 Bean 등록
-    @Bean
+   /* @Bean
     public MemberRepository memberRepository(){
         // Return 값만 바꿔도됨 왜 ? MemberService는 InterFace인 MemberRepository 인스턴수 변수를 가지고 있기 때문(다형성)
         // 객체지향적 설계 굳굳
         // 개방 폐쇄 원칙
         //return new MemoryMemberRepository();
+
+        // -> DB 켜져 있어야함.
         //return new JdbcMemberRepository(dataSource);
         //return new JdbcTemplateMemberRepository(dataSource);
         return new JpaMemberRepository(em);
-    }
+    }*/
+
+
 }

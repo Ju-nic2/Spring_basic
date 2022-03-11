@@ -23,6 +23,7 @@ public class MemberController {
     @Autowired // Dependency Injection
     public MemberController(MemberService memberService) {
         this.memberService = memberService;
+        System.out.println("class : " + memberService.getClass());
     }
     // 필드 주입
     // @Autowired private MemberService memberService;
